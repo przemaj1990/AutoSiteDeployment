@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block head_title %} All Sites | {{ block.super }} {% endblock head_title %}
+
+
+{% block content %}
+
+<br>
+    <h1>All already added sites:</h1>
+<br>
+        <form method="GET" action="" class="form-group">
+        <input type="text" name='query' placeholder="Site Search"/>
+        <input type="submit" value="Search"/>
+    </form>
+<br>
+
+
+    {% for o in object_list %}
+<div class="card ">
+        <div class="card" >
+            <div class="card-header">Site:  {{ o }}</div>
+            <div class="card-body">
+                <div class="row>"
+                <h6 class="col-sm text-left">{{ o.city }}</h6>
+                <h6 class="col-sm text-right">{{ o.instalation_date }}</h6>
+                </div>
+                <p class="card-text text-muted">{{ o.address }}</p>
+                <a href="{{ o.get_absolute_url }}" class="card-link">Detail</a>
+                <a href="{% url 'lbeportal:update' o.pk %}" class="card-link">Update</a>
+            </div>
+            </div>
+        </div>
+<br>
+    {% endfor %}
+
+
+{% endblock %}
