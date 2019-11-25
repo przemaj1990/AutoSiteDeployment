@@ -6,11 +6,11 @@ from django.db import models
 
 # Create your models here.
 DELIVERY_TYPE = (
-    (1, "Single MPLS"),
-    (2, "Single Internet"),
-    (3, "MPLS + Internet"),
-    (4, "Double MPLS"),
-    (5, "Double Internet"),
+    ("Single MPLS", "Single MPLS"),
+    ("Single Internet", "Single Internet"),
+    ("MPLS + Internet", "MPLS + Internet"),
+    ("Double MPLS", "Double MPLS"),
+    ("Double Internet", "Double Internet"),
 )
 
 PARRAREL =  (
@@ -42,8 +42,8 @@ OFFICE_HOURS = (
 )
 
 class SiteVendor(models.Model):
-    site_code = models.CharField(verbose_name="Site Code", max_length=10)
-    delivery_type = models.IntegerField(choices=DELIVERY_TYPE, verbose_name='Type of delivery')
+    site_code = models.CharField(verbose_name="Site Code", max_length=10, help_text='Code requested by Vendor Team')
+    delivery_type = models.CharField(choices=DELIVERY_TYPE, verbose_name='Type of delivery', max_length=64)
     address = models.CharField(verbose_name="Site Address", max_length=64)
     bandwidth = models.IntegerField(verbose_name="Bandwidth")
     # Site Classification

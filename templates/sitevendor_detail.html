@@ -5,10 +5,109 @@
 
 {% block content %}
 <div class="col-sm-4 col-sm-offset-3">
-    {{ object }}
+    {% if object.image %}
+    <img src='{{ object.image.url }}' class='img-responsive' />
+    {% endif %}
+<div class="container">
+
+
+<div class="row">
+    <div class="col-8">
+        <div class="card ">
+            <div class="card">
+
+                <div class="card-header">
+                     <h1>Site Code: {{ object.site_code }}</h1>
+                </div>
+
+            <div class="card-body ml-4">
+
+                <h3 class="border-top border-bottom mb-2">General Information:</h3>
+
+                <div class="mb-2"><strong>Delivery Type:</strong>
+            <p class="card-text text-muted">{{ object.delivery_type }}</p></div>
+
+                <div class="mb-2"><strong>Address:</strong>
+            <p class="card-text text-muted">{{ object.address|truncatewords_html:10 }}</p></div>
+
+                <div class="mb-2"><strong>Bandwidth:</strong>
+            <p class="card-text text-muted">{{ object.bandwidth }} kbps</p></div>
+
+                <div class="mb-2"><strong>Instalation Date:</strong>
+            <p class="card-text text-muted">{{ object.instalation_date }}</p></div>
+
+                <div class="mb-2"><strong>Local Contact:</strong>
+            <p class="card-text text-muted">{{ object.local_contact }}</p></div>
+
+                <div class="mb-2"><strong>Technical Contact:</strong>
+            <p class="card-text text-muted">{{ object.technical_contact }}</p></div>
+
+                <div class="mb-2"><strong>If LAN assistance is needed:</strong>
+            <p class="card-text text-muted">{{ object.lan_assistance }}</p></div>
+
+                <div class="mb-2"><strong>If LAN assistance is needed:</strong>
+            <p class="card-text text-muted">{{ object.voip_assistance }}</p></div>
+
+                <div class="mb-2"><strong>If this is parrarel or hot:</strong>
+            <p class="card-text text-muted">{{ object.parrarelorhot }}</p></div>
+
+                <div class="mb-2"><strong>Company Name:</strong>
+            <p class="card-text text-muted">{{ object.company_name }}</p></div>
+
+        <br>
+
+            <h3 class="border-top border-bottom mb-2">Address Details:</h3>
+
+                <div class="mb-2"><strong>City:</strong>
+            <p class="card-text text-muted">{{ object.city }}</p></div>
+
+                <div class="mb-2"><strong>Address:</strong>
+            <p class="card-text text-muted">{{ object.address_2 }}</p></div>
+
+                <div class="mb-2"><strong>Postal code:</strong>
+            <p class="card-text text-muted">{{ object.post_code }}</p></div>
+
+                <div class="mb-2"><strong>Country:</strong>
+            <p class="card-text text-muted">{{ object.country }}</p></div>
+
+                <div class="mb-2"><strong>Working hours:</strong>
+            <p class="card-text text-muted">{{ object.office_hours }}</p></div>
+
+                <div class="mb-2"><strong>Division:</strong>
+            <p class="card-text text-muted">{{ object.division }}</p></div>
+
+                <div class="mb-2"><strong>File:</strong>
+            <p class="card-text text-muted">{{ object.file }}</p></div>
+
+            </div>
+
+
+
+</div>
+</div>
+</div>
+
+    <div class="col-sm-4">
+    <div class="card "
+            <div class="card">
+                <h5 class="card-header">Operation on site</h5>
+                <div class="card-body">
+                <p class="card-text">Please be aware that this operation can totally change stored date</p>
+                <a href="{% url 'lbeportal:update' object.pk %}" class="btn btn-primary card-link">Edit site</a>
+                <a href="{% url 'lbeportal:delete' object.pk %}" class="btn btn-primary card-link">Delete Site</a>
+  </div>
+            </div>
+    </div>
+    </div>
+
+</div>
+
+
+
+
     <div class="col-sm-offset-3">
         {% if object.file %}
 <!--        <img src="{{ object.file.url }}" class="img-responsive"></div>-->
         {% endif %}
-</div>
+    </div>
 {% endblock %}

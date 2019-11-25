@@ -41,10 +41,15 @@ class SiteVendorListView(ListView):
     # Def that allow search to work
     def get_queryset(self):
         query = self.request.GET.get('query')
-        return SiteVendor.objects.filter(
-            Q(site_code__icontains=query)|
-            Q(address__icontains=query)
-        ).distinct()
+        if query:
+            object_list = SiteVendor.objects.filter(
+                Q(site_code__icontains=query)|
+                Q(address__icontains=query)
+            ).distinct()
+        else:
+            object_list = SiteVendor.objects.all()
+        return object_list
+
 
 
 class SiteVendorDetailView(DetailView):
@@ -56,6 +61,7 @@ class SiteVendorUpdateView(UpdateView):
     template_name = 'sitevendor_update.html'
     queryset = SiteVendor.objects.all()
     fields = '__all__'
+    # template_name_suffix = '_update_form'
 
 class SiteVendorDeleteView(DeleteView):
     template_name = 'sitevendor_delete.html'

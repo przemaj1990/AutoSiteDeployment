@@ -1,8 +1,22 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
 {% block content %}
     <form action="" method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
-        <button type="submit">Zapisz zmiany</button>
+        <div class="col-sm-12">
+    <div class="card "
+            <div class="row">
+    {{ form|crispy }}
+            <br>
+            <div class="card mb-4">
+<button class="btn btn-secondary btn-lg" type="submit">Zapisz zmiany</button>
+            </div>
+            </div>
+
+            </div>
+        </div>
+
+
     </form>
 {% endblock %}
