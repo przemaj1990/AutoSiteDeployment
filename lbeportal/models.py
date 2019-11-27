@@ -64,7 +64,7 @@ class SiteVendor(models.Model):
     office_hours = models.IntegerField(choices=OFFICE_HOURS, verbose_name="Office Hours:")
     division = models.IntegerField(choices=DIVISION ,verbose_name="Division:")
     # AttachFIle
-    file = models.FileField(null=True, blank=True, verbose_name="Here you can attache files:")
+    # file = models.FileField(null=True, blank=True, verbose_name="Here you can attache files:")
     # # Contact
     # local_name = models.CharField(verbose_name="Local Contact Full Name:", max_length=64)
     # local_email = models.EmailField(verbose_name="Local Contact Email:")

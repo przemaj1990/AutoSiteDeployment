@@ -58,7 +58,12 @@
 #       from django.conf import settings
 #       from django.conf.urls.static import static
 #       ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-#
+# 23. Setup email setting in settings.py:
+#        EMAIL_HOSTS = 'smtp.gmail.com'
+#        EMAIL_HOSTS_USER = 'gcxbcb0@gmail.com'
+#        EMAIL_PASSWORD = 'Pcxvbcxv'
+#        EMAIL_PORT = 587
+#        EMAIL_USE_TLS = True
 #
 #
 # Advancing the Blog: 3

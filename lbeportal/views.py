@@ -3,16 +3,17 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.db.models import Q
-
+from django.core.mail import send_mail
 # Create your views here.
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 
 from lbeportal.forms import SiteVendorForm
 from lbeportal.models import SiteVendor
+from django.views.generic.edit import FormView
 
 
-class SiteVendorCreateView(SuccessMessageMixin, CreateView):
+class SiteVendorCreateView(FormView):
     template_name = 'sitevendor_create.html'
     form_class = SiteVendorForm
     queryset = SiteVendor.objects.all()
@@ -27,8 +28,14 @@ class SiteVendorCreateView(SuccessMessageMixin, CreateView):
     def get_success_url(self):
         return reverse_lazy('lbeportal:detail', kwargs={'pk': self.object.pk})
 
-
-
+# class SiteVendorCreateView(CreateView):
+#     form_class = SiteVendorForm
+#     template_name = 'sitevendor_create.html'
+#     queryset = SiteVendor.objects.all()
+#
+#     def form_valid(self, form):
+#         print(form.cleaned_data)
+#         return super().form_valid(form)
 
 
 class SiteVendorListView(ListView):

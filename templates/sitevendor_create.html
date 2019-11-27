@@ -1,13 +1,9 @@
 {% extends 'base.html' %}
 
-{% block head_title %}
-{% endblock head_title %}
 {% block content %}
-    <form action="" method="POST">
-    {% csrf_token %}
-        <div class="container">
-    {{form.as_p}}
-        </div>
-    <button type="submit">Dodaj!</button>
-    </form>
-{% endblock %}
+
+<form action="" method="POST">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>
+{% endblock %}}

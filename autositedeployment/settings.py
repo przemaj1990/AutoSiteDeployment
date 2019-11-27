@@ -128,3 +128,9 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "autositedeployment/media")
 STATICFILES_DIRS = ['static']
+
+# EMAIL_HOSTS = 'smtp.gmail.com'
+# EMAIL_HOSTS_USER = 'przemaj1990@gmail.com'
+# EMAIL_PASSWORD = 'Przemek1990'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
