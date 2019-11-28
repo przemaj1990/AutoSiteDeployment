@@ -12,8 +12,10 @@ from lbeportal.forms import SiteVendorForm
 from lbeportal.models import SiteVendor
 from django.views.generic.edit import FormView
 
+from nocportal.models import NocComment
 
-class SiteVendorCreateView(FormView):
+
+class SiteVendorCreateView(CreateView):
     template_name = 'sitevendor_create.html'
     form_class = SiteVendorForm
     queryset = SiteVendor.objects.all()

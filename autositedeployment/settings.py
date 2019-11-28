@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'pagedown',
     # local apps
     'lbeportal',
+    'nocportal'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'

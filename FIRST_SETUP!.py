@@ -72,6 +72,9 @@
 #
 # 24 install crispy-form: pip install django-crispy-forms
 # 24a add to settings.py: CRISPY_TEMPLATE_PACK = 'bootstrap3'
+# Steps for Generic Foergin Keys:
+# (venv) pm1990@pm1990-Lenovo-Z51-70:~/PycharmProjects/autositedeployment$ python manage.py startapp nocportal
+#
 
 
 

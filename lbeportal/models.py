@@ -1,7 +1,13 @@
 from audioop import reverse
 from pydoc import resolve
 
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
+from django.conf import settings
+from django.contrib.contenttypes.fields import GenericRelation
+from nocportal.models import NocComment
+
 
 
 # Create your models here.
@@ -117,6 +123,9 @@ class SiteVendor(models.Model):
     # telephone_service = models.BooleanField(choices=BOLEAN, verbose_name="Do you want to deploy telephony services?:", null=True, default=False)
     # pstn_lines = models.BooleanField(choices=BOLEAN, verbose_name="Are you using locat PSTN lines at the moment?:", null=True, default=False)
     # reason = models.CharField(verbose_name="If No: Please specify reason why?:", max_length=64, null=True, default="")
+
+    comment = GenericRelation(NocComment, related_query_name='comment')
+
 
     def __str__(self):
         return self.site_code
