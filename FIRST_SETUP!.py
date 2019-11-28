@@ -70,7 +70,8 @@
 #       {obj.element|safe} - render code from object into html
 #       - so if ther is <h1>coś<h1> it will not print but render it into html.
 #
-#
+# 24 install crispy-form: pip install django-crispy-forms
+# 24a add to settings.py: CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 
 

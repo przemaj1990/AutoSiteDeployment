@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'lbeportal',
 ]
 
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -129,8 +131,11 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "autositedeployment/media")
 STATICFILES_DIRS = ['static']
 
-# EMAIL_HOSTS = 'smtp.gmail.com'
-# EMAIL_HOSTS_USER = 'przemaj1990@gmail.com'
-# EMAIL_PASSWORD = 'Przemek1990'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'bvcx@gmail.com'
+EMAIL_PASSWORD = 'fds'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

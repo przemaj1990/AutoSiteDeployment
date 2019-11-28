@@ -20,22 +20,16 @@ class SiteVendorCreateView(FormView):
     success_message = 'Site successfully added!'
     # success_url = reverse_lazy('lbeportal:list')
 
+
     def form_valid(self, form):
         print(form.cleaned_data)
         form.save()
+        # send_mail('Subject here', 'Here is the message.', 'przemaj1990@gmail.com', ['przemyslaw.majdanski@dsv.com'], fail_silently=False)
         return super().form_valid(form)
 
     def get_success_url(self):
         return reverse_lazy('lbeportal:detail', kwargs={'pk': self.object.pk})
 
-# class SiteVendorCreateView(CreateView):
-#     form_class = SiteVendorForm
-#     template_name = 'sitevendor_create.html'
-#     queryset = SiteVendor.objects.all()
-#
-#     def form_valid(self, form):
-#         print(form.cleaned_data)
-#         return super().form_valid(form)
 
 
 class SiteVendorListView(ListView):
@@ -68,6 +62,10 @@ class SiteVendorUpdateView(UpdateView):
     template_name = 'sitevendor_update.html'
     queryset = SiteVendor.objects.all()
     fields = '__all__'
+
+    def get_success_url(self):
+        return reverse_lazy('lbeportal:detail', kwargs={'pk': self.object.pk})
+
     # template_name_suffix = '_update_form'
 
 class SiteVendorDeleteView(DeleteView):
