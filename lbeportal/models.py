@@ -124,7 +124,7 @@ class SiteVendor(models.Model):
     # pstn_lines = models.BooleanField(choices=BOLEAN, verbose_name="Are you using locat PSTN lines at the moment?:", null=True, default=False)
     # reason = models.CharField(verbose_name="If No: Please specify reason why?:", max_length=64, null=True, default="")
 
-    comment = GenericRelation(NocComment, related_query_name='comment')
+    # comment = models.ForeignKey(NocComment, on_delete=models.CASCADE)
 
 
     def __str__(self):

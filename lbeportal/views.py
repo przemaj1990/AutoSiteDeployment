@@ -6,13 +6,19 @@ from django.db.models import Q
 from django.core.mail import send_mail
 # Create your views here.
 from django.urls import reverse_lazy, reverse
-from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
+from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView, View
 
 from lbeportal.forms import SiteVendorForm
 from lbeportal.models import SiteVendor
-from django.views.generic.edit import FormView
+from django.views.generic.edit import FormView, FormMixin
 
+from nocportal.forms import CommentForm
 from nocportal.models import NocComment
+
+class MainView(View):
+
+    def get(self, request):
+        return render(request, 'main.html')
 
 
 class SiteVendorCreateView(CreateView):
@@ -55,10 +61,33 @@ class SiteVendorListView(ListView):
 
 
 
-class SiteVendorDetailView(DetailView):
+class SiteVendorDetailView(FormMixin, DetailView):
     template_name = 'sitevendor_detail.html'
     # queryset = SiteVendor.objects.all()
     model = SiteVendor
+    form_class = CommentForm
+
+    def get_success_url(self):
+        return reverse_lazy('lbeportal:detail', kwargs={'pk': self.object.pk})
+
+    def get_context_data(self, **kwargs):
+        context = super(SiteVendorDetailView, self).get_context_data(**kwargs)
+        context['form'] = CommentForm(initial={'site': self.object})
+        return context
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    def form_valid(self, form):
+        form.save()
+        return super(SiteVendorDetailView, self).form_valid(form)
+
+
 
 class SiteVendorUpdateView(UpdateView):
     template_name = 'sitevendor_update.html'

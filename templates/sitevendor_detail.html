@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block head_title %} {{ object.site_code }} | {{ block.super }}
 {% endblock head_title %}
 
@@ -10,6 +10,20 @@
 
 <div class="container">
     <div class="row">
+
+            <div class="col">
+    <div class="card">
+            <div class="card">
+                <h5 class="card-header">Operation on site</h5>
+                <div class="card-body">
+                <p class="card-text">Please be aware that this operation can totally change stored date</p>
+                <a href="{% url 'lbeportal:update' object.pk %}" class="btn btn-primary card-link">Edit site</a>
+                <a href="{% url 'lbeportal:delete' object.pk %}" class="btn btn-primary card-link">Delete Site</a>
+                </div>
+            </div>
+    </div>
+    </div>
+
         <div class="col">
         <div class="card ">
 
@@ -73,30 +87,50 @@
                 <div class="mb-2"><strong>Division:</strong>
             <p class="card-text text-muted">{{ object.division }}</p></div>
 
-                <div class="mb-2"><strong>Comment:</strong>
+            </div>
+</div>
+</div>
+
+
+        <div class="col">
+        <div class="card ">
+
+            <div class="card-header">
+                 <h1>Comments:</h1>
+            </div>
+
+            <div class="card-body">
+
                     {% for comment in object.comment.all %}
-                    <blockquote>
-            <p class="card-text text-muted">{{ comment.content }}</p>
-            <p class="card-text text-muted">{{ comment.user }}</p></blockquote>
-                </div>
+                    <div class="card">
+                        <div class="card-body">
+                        <p class="card-text">{{ comment.content }}</p>
+
+
+                        <p class="card-text text-muted">    - {{ comment.user }}</p>
+                        </div>
+                    </div>
+
                     {% endfor %}
-            </div>
-</div>
-</div>
 
-
-    <div class="col">
-    <div class="card">
-            <div class="card">
-                <h5 class="card-header">Operation on site</h5>
-                <div class="card-body">
-                <p class="card-text">Please be aware that this operation can totally change stored date</p>
-                <a href="{% url 'lbeportal:update' object.pk %}" class="btn btn-primary card-link">Edit site</a>
-                <a href="{% url 'lbeportal:delete' object.pk %}" class="btn btn-primary card-link">Delete Site</a>
-                </div>
+                    <br>
+                     <form action="" method="POST">
+                         {% csrf_token %}
+                        <div class="form-group">
+                            <h3 class="border-top border-bottom mb-2">Add Comment:</h3>
+                            <label>Comment:</label>
+                        {{ form.content }}
+                            <label>User email:</label>
+                        {{ form.user }}
+                        {{ form.site }}
+                        </div>
+                        <button type="submit">Dodaj!</button>
+                     </form>
             </div>
+        </div>
+        </div>
+
     </div>
-    </div></div>
 </div>
 
         {% if object.file %}
