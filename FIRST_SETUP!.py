@@ -82,8 +82,8 @@
 #           a. create app User
 #           b. add for for creation new users
 #           c. add view for register, logn, logout
-#
-#
+# 29. if login requred on class/def in view, add also: LOGIN_URL = '/login/' in settings py - it will
+#     redirect you to login view.
 #
 
 
