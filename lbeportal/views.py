@@ -33,7 +33,7 @@ class SiteVendorCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         print(form.cleaned_data)
         form.save()
-        # send_mail('Subject here', 'Here is the message.', 'przemaj1990@gmail.com', ['przemyslaw.majdanski@dsv.com'], fail_silently=False)
+        send_mail('Subject here', 'Here is the message.', 'przemaj1990@gmail.com', ['przemaj1990@gmail.com'], fail_silently=False)
         return super().form_valid(form)
 
     def get_success_url(self):
