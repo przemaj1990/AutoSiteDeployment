@@ -74,7 +74,19 @@
 # 24a add to settings.py: CRISPY_TEMPLATE_PACK = 'bootstrap3'
 # Steps for Generic Foergin Keys:
 # (venv) pm1990@pm1990-Lenovo-Z51-70:~/PycharmProjects/autositedeployment$ python manage.py startapp nocportal
+# 25. Create in teplate directory registration
+# 26. Create login & logout html
+# 27. add LOGIN_REDIRECT_URL = '/lbe_portal' to settings.py - tp redirect after login to correct page.
+# 27b. add LOGOUT_REDIRECT_URL = '/lbe_portal' to settping.py
+# 28. When you would like to ue your own User app:
+#           a. create app User
+#           b. add for for creation new users
+#           c. add view for register, logn, logout
 #
+#
+#
+
+
 
 
 

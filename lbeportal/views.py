@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.paginator import Paginator
 from django.shortcuts import render
@@ -21,7 +22,7 @@ class MainView(View):
         return render(request, 'main.html')
 
 
-class SiteVendorCreateView(CreateView):
+class SiteVendorCreateView(LoginRequiredMixin, CreateView):
     template_name = 'sitevendor_create.html'
     form_class = SiteVendorForm
     queryset = SiteVendor.objects.all()
@@ -99,7 +100,7 @@ class SiteVendorUpdateView(UpdateView):
 
     # template_name_suffix = '_update_form'
 
-class SiteVendorDeleteView(DeleteView):
+class SiteVendorDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'sitevendor_delete.html'
     queryset = SiteVendor.objects.all()
 

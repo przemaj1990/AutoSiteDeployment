@@ -19,6 +19,7 @@
 
 {% block navbar %}
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+
     <div class="container">
       <a class="navbar-brand" href="{% url 'lbeportal:main' %}">Automatic Site Deployment Portal</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,11 +27,28 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'lbeportal:list' %}">List of sites</a>
           </li>
         </ul>
+          <ul class="nav justify-content-end">
+              <li class="nav-item">
+                <a class="navbar-text" href="#">User: {{user}}</a>
+              </li>
+              <li class="nav-item">
+                <a class="navbar-text" href="#">    |   </a>
+              </li>
+              <li class="nav-item">
+            {% if user.is_authenticated %}
+              <a class="navbar-text" href="/logout">Logout here</a>
+            {% else %}
+              <a class="navbar-text" href="/login">Login here</a>
+            {% endif %}
+              </li>
+          </ul>
+      </div>
+
       </div>
     </div>
   </nav>
@@ -49,11 +67,14 @@
 {% endif %}
 
 </div>
-
-
-    {% block content %}
+    {% block login %}
     {% endblock %}
 
+
+<!--add if user.is_authenticated -->
+    {% block content %}
+    {% endblock %}
+<!--add endif -->
 
 
 

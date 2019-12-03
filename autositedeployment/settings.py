@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'pagedown',
     # local apps
     'lbeportal',
-    'nocportal'
+    'nocportal',
+    'engineers',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
@@ -140,3 +141,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+LOGIN_REDIRECT_URL = '/lbe_portal'
+LOGOUT_REDIRECT_URL = '/lbe_portal'
+
